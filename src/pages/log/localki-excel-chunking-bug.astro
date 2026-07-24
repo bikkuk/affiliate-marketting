@@ -1,0 +1,155 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why a tax advisor's Excel habit broke my RAG pipeline — Bench Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #15130F;
+    --bg-raised: #1C1913;
+    --ink: #EDE6D8;
+    --ink-dim: #A39C8C;
+    --muted: #7C8577;
+    --accent: #E8A33D;
+    --line: #2B2820;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 6vw;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  .wordmark span { color: var(--accent); }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+    margin-left: 28px;
+  }
+  nav a:hover { color: var(--ink); }
+
+  main {
+    padding: 7vw 6vw 8vw;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: 3px 9px;
+    transform: rotate(-1.2deg);
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  article p {
+    color: var(--ink-dim);
+    margin-bottom: 20px;
+    font-size: 1.02rem;
+  }
+  article .placeholder {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+    border: 1px dashed var(--line);
+    padding: 14px 16px;
+    border-radius: 3px;
+  }
+  .back {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer {
+    padding: 26px 6vw 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="wordmark">bench<span>.log</span></a>
+  <nav>
+    <a href="/">Log</a>
+  </nav>
+</header>
+
+<main>
+  <span class="stamp">tested · localki · pc1 offline</span>
+  <h1>Why a tax advisor's Excel habit broke my RAG pipeline</h1>
+  <div class="meta">24 Jul 2026 · FastAPI · ChromaDB · BM25 hybrid retrieval · Ollama Qwen 2.5 14B</div>
+
+  <article>
+    <p><strong>TESTED</strong> · LocalKI pilot session · offline RAG stack, PC1</p>
+
+    <p>LocalKI is the RAG workstation I've been building for German tax advisors, running fully offline, no cloud calls, everything local on PC1. It's near pilot ready. My pilot user, Anna, has been putting it through real client files, and real client files break things in ways clean test data never does.</p>
+
+    <p>Six bugs came out of her last pilot session, tracked as BUG_F01 through BUG_F06. Most of them were the usual pilot noise. One wasn't.</p>
+
+    <p>Anna converts every Excel file to PDF before she uploads it. Not a workaround, just her normal habit from years of working the way tax software expects. It turns out that single habit was the root cause of most of the chunking failures the pipeline was throwing. A spreadsheet has structure, rows, columns, a Mandant's numbers sitting in a specific relationship to each other. Flatten that into a PDF first, and the structure that the Structure Registry depends on, the 44 label canonical taxonomy that classifies incoming documents, has already been lost before the system ever sees the file.</p>
+
+    <p>The fix isn't "tell Anna to stop doing that." Real tax advisors are not going to change a habit that predates the software by a decade. The fix is Excel native ingestion, reading the spreadsheet directly instead of asking the pipeline to reconstruct structure from a PDF that already threw it away.</p>
+
+    <p class="placeholder">Placeholder: exact chunking accuracy before and after the fix, once the Excel native path is benchmarked against the SteuerEx set.</p>
+
+    <p>Why this matters past LocalKI specifically: if you're building any local AI system that ingests documents from real users instead of test fixtures, watch what format they hand you before you optimize your chunking logic. The bug usually isn't in the chunker.</p>
+
+    <p>Next entry: how the correction and learning memory layer is handling Anna's fixes so the same mistake doesn't get made twice.</p>
+  </article>
+
+  <a class="back" href="/">← Back to the log</a>
+</main>
+
+<footer>
+  bench.log — a project of Nipoon IT Services, Zirndorf
+</footer>
+
+</body>
+</html>
