@@ -4,7 +4,7 @@ Handoff document for Claude Code. This is the decided scope. Do not re open deci
 
 ## What this is
 
-A journal site that narrates real work already happening (LocalKI, ComfyUI workflows, AI workstation builds, general AI consulting) rather than a generic affiliate blog. It exists to feed leads into Nipoon IT Services and LocalKI, not as a standalone income bet.
+A journal site that narrates real work already happening (LocalKI, ComfyUI workflows, AI workstation builds, general AI consulting) rather than a generic affiliate blog. It exists to feed leads into Klarverk and LocalKI, not as a standalone income bet.
 
 ## Niche
 
