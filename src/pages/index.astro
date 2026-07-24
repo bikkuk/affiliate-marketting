@@ -1,0 +1,239 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bench Log — Local AI, tested on real hardware</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #15130F;
+    --bg-raised: #1C1913;
+    --ink: #EDE6D8;
+    --ink-dim: #A39C8C;
+    --muted: #7C8577;
+    --accent: #E8A33D;
+    --line: #2B2820;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 6vw;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  .wordmark span { color: var(--accent); }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+    margin-left: 28px;
+    transition: color 0.2s ease;
+  }
+  nav a:hover { color: var(--ink); }
+
+  .hero {
+    padding: 9vw 6vw 6vw;
+    max-width: 880px;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 4.4vw, 3.4rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 15ch;
+  }
+  .hero p {
+    margin-top: 24px;
+    color: var(--ink-dim);
+    font-size: 1.05rem;
+    max-width: 58ch;
+  }
+
+  .feed {
+    padding: 2vw 6vw 8vw;
+    display: grid;
+    gap: 28px;
+    max-width: 880px;
+  }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .entry {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 26px 28px;
+    position: relative;
+  }
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: 3px 9px;
+    transform: rotate(-1.2deg);
+    margin-bottom: 16px;
+  }
+  .entry h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+    letter-spacing: -0.005em;
+  }
+  .entry .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .entry p { color: var(--ink-dim); max-width: 64ch; }
+  .entry .read-more {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .entry .read-more:hover { border-bottom-color: var(--accent); }
+
+  .subscribe {
+    margin: 0 6vw 8vw;
+    max-width: 880px;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 34px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .subscribe h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+  .subscribe p { color: var(--ink-dim); font-size: 0.92rem; max-width: 42ch; }
+  .subscribe form {
+    display: flex;
+    gap: 10px;
+  }
+  .subscribe input {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 11px 14px;
+    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    width: 220px;
+  }
+  .subscribe button {
+    background: var(--accent);
+    color: #15130F;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  footer {
+    padding: 26px 6vw 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">bench<span>.log</span></div>
+  <nav>
+    <a href="#">Log</a>
+    <a href="#">About</a>
+    <a href="#">Newsletter</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">Local AI, tested on ordinary hardware</span>
+  <h1>We test which local AI models and ComfyUI workflows actually run, then publish the exact configs.</h1>
+  <p>A running log of real work: RTX 5070 Ti benchmarks, ComfyUI workflows, and local AI deployments for German and European creators and small businesses. Written as it happens, not as a review.</p>
+</section>
+
+<section class="feed">
+  <div class="section-label">Latest entries</div>
+
+  <article class="entry">
+    <span class="stamp">coming soon</span>
+    <h2>The first entry is in review</h2>
+    <div class="meta">Drafted · awaiting approval before it goes live</div>
+    <p>The first real session write-up is drafted and waiting on review. Once it's approved it publishes here, one real session at a time.</p>
+  </article>
+</section>
+
+<div class="subscribe">
+  <div>
+    <h3>Get the next entry by email</h3>
+    <p>One issue roughly every one to two weeks. No spam, just what actually got tested.</p>
+  </div>
+  <form onsubmit="return false;">
+    <input type="email" placeholder="you@example.com">
+    <button type="submit">Subscribe</button>
+  </form>
+</div>
+
+<footer>
+  bench.log — a project of Nipoon IT Services, Zirndorf
+</footer>
+
+</body>
+</html>
