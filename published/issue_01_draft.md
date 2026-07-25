@@ -1,6 +1,7 @@
 ---
 issue: 1
 date: 2026-07-24
+packet_prepared: true
 ---
 
 **Subject line:** The bug wasn't in the chunker
