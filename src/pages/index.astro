@@ -197,19 +197,19 @@
 <header>
   <div class="wordmark">bench<span>.log</span></div>
   <nav>
-    <a href="#">Log</a>
-    <a href="#">About</a>
-    <a href="#">Newsletter</a>
+    <a href="#log">Log</a>
+    <a href="#about">About</a>
+    <a href="#newsletter">Newsletter</a>
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="about">
   <span class="eyebrow">Local AI, tested on ordinary hardware</span>
   <h1>We test which local AI models and ComfyUI workflows actually run, then publish the exact configs.</h1>
   <p>A running log of real work: RTX 5070 Ti benchmarks, ComfyUI workflows, and local AI deployments for German and European creators and small businesses. Written as it happens, not as a review.</p>
 </section>
 
-<section class="feed">
+<section class="feed" id="log">
   <div class="section-label">Latest entries</div>
 
   <article class="entry">
@@ -221,13 +221,13 @@
   </article>
 </section>
 
-<div class="subscribe">
+<div class="subscribe" id="newsletter">
   <div>
     <h3>Get the next entry by email</h3>
-    <p>One issue roughly every one to two weeks. No spam, just what actually got tested.</p>
+    <p id="subscribe-status">One issue roughly every one to two weeks. No spam, just what actually got tested.</p>
   </div>
-  <form onsubmit="return false;">
-    <input type="email" placeholder="you@example.com">
+  <form id="subscribe-form">
+    <input type="email" id="subscribe-email" placeholder="you@example.com" required>
     <button type="submit">Subscribe</button>
   </form>
 </div>
@@ -235,6 +235,16 @@
 <footer>
   bench.log — a project of Klarverk, Zirndorf
 </footer>
+
+<script>
+  const form = document.getElementById('subscribe-form');
+  const status = document.getElementById('subscribe-status');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    status.textContent = "Signup isn't wired up yet — the newsletter is waiting on Substack API access. Check back soon.";
+    form.querySelector('button').disabled = true;
+  });
+</script>
 
 </body>
 </html>
