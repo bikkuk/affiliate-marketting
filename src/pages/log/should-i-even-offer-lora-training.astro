@@ -1,0 +1,149 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A client asked if I could train a custom model on their images. I didn't know yet. — Bench Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #15130F;
+    --bg-raised: #1C1913;
+    --ink: #EDE6D8;
+    --ink-dim: #A39C8C;
+    --muted: #7C8577;
+    --accent: #E8A33D;
+    --line: #2B2820;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 6vw;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  .wordmark span { color: var(--accent); }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+    margin-left: 28px;
+  }
+  nav a:hover { color: var(--ink); }
+
+  main {
+    padding: 7vw 6vw 8vw;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: 3px 9px;
+    transform: rotate(-1.2deg);
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  article p {
+    color: var(--ink-dim);
+    margin-bottom: 20px;
+    font-size: 1.02rem;
+  }
+  article .placeholder {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+    border: 1px dashed var(--line);
+    padding: 14px 16px;
+    border-radius: 3px;
+  }
+  .back {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer {
+    padding: 26px 6vw 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="wordmark">bench<span>.log</span></a>
+  <nav>
+    <a href="/">Log</a>
+  </nav>
+</header>
+
+<main>
+  <span class="stamp">researched · localki / klarverk · not built</span>
+  <h1>A client asked if I could train a custom model on their images. I didn't know yet.</h1>
+  <div class="meta">21 Jul 2026 · Stable Diffusion LoRA fine-tuning · on-prem</div>
+
+  <article>
+    <p>Somebody asked, basically in passing, whether I could train something on their own images — their product photos, their style — instead of just running the RAG setup I'd already pitched them on. Same on-prem, same "your data never leaves the building" pitch, just a different kind of model underneath.</p>
+
+    <p>I didn't say yes on the spot. I didn't actually know if it made sense as a real offering yet, so I spent an evening figuring that out instead of just quoting a number that felt right.</p>
+
+    <p>The honest answer: it's not a bolt-on. LoRA fine-tuning is closer to a small project than a checkbox feature — you're not selling "AI image generation," you're selling a specific trained thing that works for one client's specific images, and that has a floor on how much attention it needs regardless of how good your tooling gets. So the pricing conclusion I landed on was project-priced, not per-image. Per-image pricing implies it scales like inference. It doesn't. The expensive part is getting the dataset and training right once, not generating afterward.</p>
+
+    <p>I haven't built this yet. It's sitting as a candidate service, logged, waiting for the next time the services list actually gets touched. What I did decide is not to undersell it just because "it's just a LoRA" sounds small from the outside. It isn't, once you've actually tried to scope what "done" looks like for a client who isn't a hobbyist fine-tuning their own Discord avatar.</p>
+
+    <p>If you're pricing something similar and you're tempted to go per-generation: don't, until you've actually run one end to end and timed where the hours went.</p>
+  </article>
+
+  <a class="back" href="/">← Back to the log</a>
+</main>
+
+<footer>
+  bench.log — a project of Klarverk, Zirndorf
+</footer>
+
+</body>
+</html>
