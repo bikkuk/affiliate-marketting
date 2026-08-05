@@ -1,0 +1,189 @@
+---
+// Describes what this site ACTUALLY does as of 2026-08-05: Netlify hosting,
+// Cloudflare Web Analytics (cookieless), self-hosted fonts, and a newsletter
+// form that is deliberately inert. If any of those change, this page changes
+// in the same commit -- a privacy policy that describes the old build is worse
+// than none.
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutzerklärung — Bench Log</title>
+<meta name="description" content="Datenschutzerklärung für bench.log: welche Daten beim Besuch verarbeitet werden, auf welcher Rechtsgrundlage, und welche Rechte Sie haben.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://hoppingproject.netlify.app/datenschutz">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root {
+    --bg: #15130F;
+    --bg-raised: #1C1913;
+    --ink: #EDE6D8;
+    --ink-dim: #A39C8C;
+    --muted: #7C8577;
+    --accent: #E8A33D;
+    --line: #2B2820;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 6vw;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+  .wordmark span { color: var(--accent); }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+    margin-left: 28px;
+  }
+  nav a:hover { color: var(--ink); }
+
+  main {
+    padding: 7vw 6vw 8vw;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .updated {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin: 32px 0 8px;
+  }
+  p { color: var(--ink-dim); margin-bottom: 12px; }
+  ul { color: var(--ink-dim); margin: 0 0 12px 20px; }
+  li { margin-bottom: 6px; }
+  .addr { white-space: pre-line; }
+  .back {
+    display: inline-block;
+    margin-top: 44px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer {
+    padding: 26px 6vw 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="wordmark">bench<span>.log</span></a>
+  <nav>
+    <a href="/">Log</a>
+  </nav>
+</header>
+
+<main>
+  <span class="eyebrow">Rechtliches</span>
+  <h1>Datenschutzerklärung</h1>
+  <div class="updated">Stand: 5. August 2026</div>
+
+  <h2>1. Verantwortlicher</h2>
+  <p class="addr">Nipoon Kawser Kalam
+Klarverk – IT-Betreuung &amp; Online-Marketing
+Sauerbruchstr. 3
+90513 Zirndorf
+Deutschland</p>
+  <p>E-Mail: <a href="mailto:kontakt@klarverk.de">kontakt@klarverk.de</a><br>
+  Telefon: <a href="tel:+4915224850883">+49 152 24850883</a></p>
+
+  <h2>2. Kurzfassung</h2>
+  <p>Diese Website setzt <strong>keine Cookies</strong>, bindet <strong>keine externen Schriftarten</strong> ein und verwendet <strong>kein seitenübergreifendes Tracking</strong>. Es gibt deshalb kein Cookie-Banner: es gibt nichts einzuwilligen. Verarbeitet werden lediglich die technisch notwendigen Zugriffsdaten sowie eine anonyme Reichweitenmessung, beides auf Grundlage des berechtigten Interesses am sicheren und bedarfsgerechten Betrieb der Seite.</p>
+
+  <h2>3. Hosting und Server-Logfiles</h2>
+  <p>Die Website wird bei der Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA gehostet. Beim Aufruf werden automatisch Zugriffsdaten verarbeitet, die Ihr Browser übermittelt:</p>
+  <ul>
+    <li>IP-Adresse der anfragenden Seite</li>
+    <li>Datum und Uhrzeit des Zugriffs</li>
+    <li>aufgerufene Seite bzw. Datei</li>
+    <li>übertragene Datenmenge und Meldung über den Abruferfolg</li>
+    <li>Browsertyp, Browserversion und Betriebssystem</li>
+    <li>gegebenenfalls die zuvor besuchte Seite (Referrer)</li>
+  </ul>
+  <p>Diese Verarbeitung ist zur Auslieferung der Seite und zur Abwehr von Angriffen technisch erforderlich. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Da der Anbieter seinen Sitz in den USA hat, kann eine Übermittlung in ein Drittland stattfinden; sie erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission bzw. einer Zertifizierung nach dem EU-US Data Privacy Framework.</p>
+
+  <h2>4. Reichweitenmessung (Cloudflare Web Analytics)</h2>
+  <p>Zur Messung der Reichweite wird Cloudflare Web Analytics der Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA eingesetzt. Der Dienst arbeitet <strong>ohne Cookies</strong> und ohne Wiedererkennung einzelner Personen über mehrere Websites oder Sitzungen hinweg. Es wird kein Profil gebildet, Ihre IP-Adresse wird nicht gespeichert. Erhoben werden aggregierte Angaben wie aufgerufene Seite, Referrer, ungefähre Herkunftsregion und Gerätetyp.</p>
+  <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse besteht darin, zu erkennen, welche Inhalte gelesen werden. Da keine Informationen auf Ihrem Endgerät gespeichert oder ausgelesen werden, ist keine Einwilligung nach § 25 TDDDG erforderlich.</p>
+
+  <h2>5. Schriftarten</h2>
+  <p>Die verwendeten Schriftarten (Inter, Space Grotesk, JetBrains Mono) werden <strong>lokal von diesem Server</strong> ausgeliefert. Es besteht beim Seitenaufruf <strong>keine Verbindung zu Servern von Google</strong>; eine Übermittlung Ihrer IP-Adresse an Google findet nicht statt.</p>
+
+  <h2>6. Newsletter-Formular</h2>
+  <p>Das auf der Startseite sichtbare Anmeldeformular ist derzeit <strong>nicht aktiv</strong>. Eine Eingabe wird nicht übermittelt, nicht gespeichert und nicht weitergegeben; das Formular meldet dies auch selbst zurück. Sobald ein Newsletter-Versand tatsächlich eingerichtet ist, wird diese Erklärung vorher entsprechend ergänzt.</p>
+
+  <h2>7. Kontaktaufnahme per E-Mail</h2>
+  <p>Wenn Sie uns per E-Mail schreiben, verarbeiten wir Ihre Angaben ausschließlich zur Bearbeitung Ihrer Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f bzw. lit. b DSGVO. Die Daten werden gelöscht, sobald sie nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+
+  <h2>8. Verschlüsselung</h2>
+  <p>Diese Seite wird ausschließlich über eine TLS-verschlüsselte Verbindung (HTTPS) ausgeliefert.</p>
+
+  <h2>9. Ihre Rechte</h2>
+  <p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie ein <strong>Widerspruchsrecht</strong> gegen Verarbeitungen auf Grundlage berechtigter Interessen (Art. 21 DSGVO). Wenden Sie sich dafür formlos an die oben genannte Adresse.</p>
+  <p>Unabhängig davon steht Ihnen ein Beschwerderecht bei einer Aufsichtsbehörde zu. Zuständig ist das Bayerische Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach.</p>
+
+  <h2>10. Änderungen</h2>
+  <p>Diese Erklärung beschreibt den Stand der Website zum oben genannten Datum. Ändert sich, was die Seite technisch tut, wird sie mit derselben Änderung angepasst.</p>
+
+  <a class="back" href="/">← Zurück zum Log</a>
+</main>
+
+<footer>
+  bench.log — a project of Klarverk, Zirndorf ·
+  <a href="/impressum">Impressum</a> ·
+  <a href="/datenschutz">Datenschutz</a>
+</footer>
+
+<!-- Cloudflare Web Analytics — cookieless, no personal data stored -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9d549f504d264920917edaa208fb0aab"}'></script>
+
+</body>
+</html>
