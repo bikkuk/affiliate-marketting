@@ -1,0 +1,160 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My illustration model rendered photographs, and turning the dial did nothing — Bench Log</title>
+<meta name="description" content="A trained Flux style LoRA returned photoreal images on scene pages at every strength setting. The fix was a prompt clause, not a weight — and it inverts the rule about prose style words fighting a trained LoRA.">
+<link rel="canonical" href="https://hoppingproject.netlify.app/log/style-lora-rendered-photographs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My illustration model rendered photographs, and turning the dial did nothing">
+<meta property="og:description" content="A trained Flux style LoRA returned photoreal images on scene pages at every strength setting. The fix was a prompt clause, not a weight.">
+<meta property="og:url" content="https://hoppingproject.netlify.app/log/style-lora-rendered-photographs">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #15130F;
+    --bg-raised: #1C1913;
+    --ink: #EDE6D8;
+    --ink-dim: #A39C8C;
+    --muted: #7C8577;
+    --accent: #E8A33D;
+    --line: #2B2820;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 6vw;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  .wordmark span { color: var(--accent); }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+    margin-left: 28px;
+  }
+  nav a:hover { color: var(--ink); }
+
+  main {
+    padding: 7vw 6vw 8vw;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: 3px 9px;
+    transform: rotate(-1.2deg);
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  article p {
+    color: var(--ink-dim);
+    margin-bottom: 20px;
+    font-size: 1.02rem;
+  }
+  article strong { color: var(--ink); font-weight: 600; }
+  article code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    color: var(--ink);
+  }
+  .back {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer {
+    padding: 26px 6vw 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="wordmark">bench<span>.log</span></a>
+  <nav>
+    <a href="/">Log</a>
+  </nav>
+</header>
+
+<main>
+  <span class="stamp">tested · storybook · 16 pages rendered</span>
+  <h1>My illustration model rendered photographs, and turning the dial did nothing</h1>
+  <div class="meta">5 Aug 2026 · Flux.1-dev fp8 · two stacked LoRAs · RTX 5070 Ti 16 GB</div>
+
+  <article>
+    <p>I finally shipped the thing this pipeline was built for: a 16-page illustrated children's book, one recurring character, all 16 pages on disk and assembled into a viewer. Two trained LoRAs doing the work — one for the character, one for the house style — stacked at full strength, which is the recipe I'd measured a day earlier and written down as settled.</p>
+
+    <p>The recipe was wrong. Not wrong for the pages I'd measured it on. Wrong for the ten pages I hadn't.</p>
+
+    <p>Six of sixteen pages have the character in frame. The other ten are scenes — a smoggy town, a canal street, a rooftop bus stop. With the style trigger alone in front of an architectural scene, page 1 came back as a <strong>photograph</strong>. Not a stylized render, not a near-miss: a photoreal image of grey smokestack buildings. My first instinct was that the character LoRA was fighting the style one, so I ran the page at character strength 1.0, 0.5, and 0.0. Photoreal at all three. That killed the strength theory outright — it wasn't a weight problem, it was a prompt problem. Adding one clause, <em>"children's picture book illustration, coloured pencil drawing on paper,"</em> fixed both bad pages on a single roll.</p>
+
+    <p>That's the part worth keeping, because it inverts the rule I'd written for myself. My own runbook said prose style words can only <em>fight</em> a trained style LoRA — that once you've trained the style, describing it in words just adds noise. On character-led prompts that holds. On scene-led prompts the opposite holds: the trained style has nothing to anchor to, Flux falls back to its photographic prior, and the prose words are what rescue it. Same model, same LoRA, opposite advice depending on what's in frame.</p>
+
+    <p>The other thing this run settled is cheaper to state and more expensive to ignore. I reviewed all sixteen pages individually against their own text rather than spot-checking a sample. Eight passed, eight failed, and the failures were not the kind a sample catches: one page had a <strong>second copy of the main character</strong> standing in the background, another had no people in it at all under text reading <em>"the grumps all grinned."</em> Both are instantly obvious when you look at the page, and both are invisible in a grid of thumbnails.</p>
+
+    <p>The economics make that easy. Each render is about 30 seconds — a full 16-page pass is 8 minutes. Re-rolling the eight bad pages cost less than the time it took to write down why they were bad. <strong>Generating is cheap; reviewing is the expensive step, and it's the one people try to sample their way out of.</strong> I've now been burned by a 2-of-N spot check twice on this project, once on a training dataset and once on finished pages.</p>
+
+    <p>One decision I expected to be hard turned out to be a deletion. I'd trained a third LoRA for locations and assumed I'd stack all three. An A/B on three pages, same seed, only that loader differing, showed it added a painted border artifact, paled the composition, and put modern cars in a canal street — while contributing no location fidelity the scene text wasn't already producing. It's out. Three-LoRA stacking stays unmeasured because it turned out to be unnecessary.</p>
+
+    <p>Next entry: the one thing this book genuinely cannot do — and why it's a dataset problem no prompt will solve.</p>
+  </article>
+
+  <a class="back" href="/">← Back to the log</a>
+</main>
+
+<footer>
+  bench.log — a project of Klarverk, Zirndorf
+</footer>
+
+</body>
+</html>

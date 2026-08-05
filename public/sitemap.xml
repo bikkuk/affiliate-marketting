@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hand-maintained. Add one <url> block per new post when it moves to published/.
+  (@astrojs/sitemap was tried 2026-08-05 and reverted: its current release needs
+  Astro 5 and crashes this Astro 4 build at astro:build:done.)
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://hoppingproject.netlify.app/</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://hoppingproject.netlify.app/log/style-lora-rendered-photographs</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hoppingproject.netlify.app/log/localki-excel-chunking-bug</loc>
+    <lastmod>2026-07-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hoppingproject.netlify.app/log/cleaning-up-30-dead-html-files</loc>
+    <lastmod>2026-07-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hoppingproject.netlify.app/log/should-i-even-offer-lora-training</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+</urlset>

@@ -6,6 +6,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bench Log — Local AI, tested on real hardware</title>
+<meta name="description" content="A running log of local AI work on ordinary hardware: RTX 5070 Ti benchmarks, ComfyUI and Flux LoRA workflows, on-prem RAG deployments. Real configs and measured numbers, written as the work happens.">
+<link rel="canonical" href="https://hoppingproject.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bench Log — Local AI, tested on real hardware">
+<meta property="og:description" content="RTX 5070 Ti benchmarks, ComfyUI and Flux LoRA workflows, on-prem RAG deployments. Real configs and measured numbers.">
+<meta property="og:url" content="https://hoppingproject.netlify.app/">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -211,6 +218,14 @@
 
 <section class="feed" id="log">
   <div class="section-label">Latest entries</div>
+
+  <article class="entry">
+    <span class="stamp">tested · storybook · 16 pages rendered</span>
+    <h2>My illustration model rendered photographs, and turning the dial did nothing</h2>
+    <div class="meta">5 Aug 2026 · Flux.1-dev fp8 · two stacked LoRAs · RTX 5070 Ti 16 GB</div>
+    <p>A trained style LoRA returned photoreal images on scene pages — at character strength 1.0, 0.5 and 0.0 alike. The fix was one prompt clause, not a weight, and it inverts the rule I'd written down the day before.</p>
+    <a class="read-more" href="/log/style-lora-rendered-photographs">Read the full entry →</a>
+  </article>
 
   <article class="entry">
     <span class="stamp">tested · localki · pc1 offline</span>
