@@ -1,0 +1,164 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I bought the whole server, and now I get to do nothing about it for a week — Bench Log</title>
+<meta name="description" content="Every part for the third local AI node is bought and none of it has arrived. What 'all the parts' actually means, why the RTX 3090 leaving my desktop is the real cost, and the rules I'm setting before I film the assembly.">
+<link rel="canonical" href="https://hoppingproject.netlify.app/log/bought-the-server-filming-the-build">
+<meta property="og:type" content="article">
+<meta property="og:title" content="I bought the whole server, and now I get to do nothing about it for a week">
+<meta property="og:description" content="Every part for the third local AI node is bought and none of it has arrived. Why the RTX 3090 leaving my desktop is the real cost, and the rules I'm setting before I film the assembly.">
+<meta property="og:url" content="https://hoppingproject.netlify.app/log/bought-the-server-filming-the-build">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root {
+    --bg: #15130F;
+    --bg-raised: #1C1913;
+    --ink: #EDE6D8;
+    --ink-dim: #A39C8C;
+    --muted: #7C8577;
+    --accent: #E8A33D;
+    --line: #2B2820;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 6vw;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  .wordmark span { color: var(--accent); }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+    margin-left: 28px;
+  }
+  nav a:hover { color: var(--ink); }
+
+  main {
+    padding: 7vw 6vw 8vw;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: 3px 9px;
+    transform: rotate(-1.2deg);
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  article p {
+    color: var(--ink-dim);
+    margin-bottom: 20px;
+    font-size: 1.02rem;
+  }
+  article strong { color: var(--ink); font-weight: 600; }
+  article code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    color: var(--ink);
+  }
+  .back {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer {
+    padding: 26px 6vw 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="wordmark">bench<span>.log</span></a>
+  <nav>
+    <a href="/">Log</a>
+  </nav>
+</header>
+
+<main>
+  <span class="stamp">ordered · infrastructure · part 2 of 2</span>
+  <h1>I bought the whole server, and now I get to do nothing about it for a week</h1>
+  <div class="meta">26 Aug 2026 · RTX 3090 24 GB + RTX 5070 Ti 16 GB · 112 GB DDR4 · Ubuntu Server</div>
+
+  <article>
+    <p>The plan I wrote up yesterday is now money that has left my account. Every part for the third machine is bought. None of it is here. For the next several days the entire project consists of refreshing tracking pages, which is a genuinely strange phase to be in after a month of arguing with myself about whether to build this at all.</p>
+
+    <p>Worth being precise about what "all the parts" means, because the buy list is smaller than the spec sheet. The platform is what I actually paid for: the Supermicro X10DRi-T4+ board, the two Xeon E5-2620 v3s, the 112 GB of DDR4, and the unglamorous supporting cast that never makes it into anyone's parts list — power, chassis, cooling, cables, the storage it boots from. The graphics cards weren't a purchase. The RTX 3090 and the RTX 5070 Ti are cards I already own, and moving them is the part of this build that costs something real: the 3090 is in my desktop today, doing work, and it comes out so that a machine in the other room becomes worth having. <strong>Forty gigabytes of pooled VRAM is the headline. A weaker main PC is the invoice.</strong></p>
+
+    <p>The waiting is annoying and also the only clean thinking time this project will get. Once the boxes are open there's a strong pull toward <em>just get it posting</em>, and every decision made in that state is made under hardware pressure. So the decisions stay where I put them yesterday and I'm not reopening them: same Ubuntu Server as the existing box, same driver and Ollama stack, key-based SSH, tunnelled to localhost on its own port. New alias, new ports, nothing else new. One playbook for two machines. A fresh build is a magnet for trying four unfamiliar things at once, and the bill for that arrives six months later when neither box works like the other.</p>
+
+    <p>The one thing I <em>am</em> changing is that I'm going to film it.</p>
+
+    <p>Not a build montage. When the parts land I'm photographing and recording the assembly as it happens, including the parts that go wrong, because used enterprise hardware from 2014 fails in ways that consumer builds don't and almost nobody documents it. A modern consumer build is essentially solved — there are a thousand clean videos of a clean board going into a clean case. A liquidated dual-socket server board is a different genre: mounting hardware that may or may not be the mounting hardware it shipped with, cooling designed for a chassis I don't have, firmware from a decade ago, and a management interface that expects to be on a network I haven't built. I don't know which of those will actually bite. That's exactly why it's worth recording rather than reconstructing from memory afterwards.</p>
+
+    <p>There's an obvious trap in this and I'd rather name it now than discover it on camera. Filming a build makes you slower, and worse, it tempts you into performing a build instead of doing one — retaking a step so it looks tidy, skipping the part where you sit and stare at a manual for ten minutes because that's boring footage. The boring ten minutes is usually where the actual information is. So the rule I'm setting for myself before the first box arrives: <strong>the camera runs, the build does not wait for the camera, and nothing gets re-staged.</strong> If that produces bad footage of a good build, I'll take that trade.</p>
+
+    <p>What won't be in the next entry: any number. No tokens per second, no wattage, no thermal figures, no verdict on whether two slow Xeons strangle a model that spills off the GPUs. I have opinions about all four. None of them are measurements, and this log doesn't print opinions as numbers. The meter goes on the wall socket before I make a single claim about what this thing costs to run.</p>
+
+    <p>Next entry: what turned up in the boxes, and whether it POSTs.</p>
+  </article>
+
+  <a class="back" href="/">← Back to the log</a>
+</main>
+
+<footer>
+  bench.log — a project of Klarverk, Zirndorf ·
+  <a href="/impressum">Impressum</a> ·
+  <a href="/datenschutz">Datenschutz</a>
+</footer>
+
+<!-- Cloudflare Web Analytics — cookieless, no personal data stored -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9d549f504d264920917edaa208fb0aab"}'></script>
+
+</body>
+</html>
