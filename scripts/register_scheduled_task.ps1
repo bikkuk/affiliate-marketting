@@ -10,7 +10,11 @@
 #   Unregister-ScheduledTask -TaskName "Bench Log - Activity Posting Automation" -Confirm:$false
 #   (then run the block below)
 
-$Action = New-ScheduledTaskAction -Execute "claude.exe" `
+# NOTE 2026-08-26: this was `-Execute "claude.exe"` (bare name). Task Scheduler
+# does not resolve PATH the way an interactive shell does, so every run since
+# registration failed with 0x80070002 ERROR_FILE_NOT_FOUND -- the task never
+# launched at all, and nothing surfaced that. Absolute path only.
+$Action = New-ScheduledTaskAction -Execute "C:\Users\Nipoon Kalam\.local\bin\claude.exe" `
     -Argument "--print --dangerously-skip-permissions `"$(Get-Content 'E:\CLAUDE\AFFILATE MARKETTING\scripts\run_pipeline_prompt.md' -Raw)`"" `
     -WorkingDirectory "E:\CLAUDE\AFFILATE MARKETTING"
 
