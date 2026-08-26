@@ -3,9 +3,20 @@
 These need a human hand on the keyboard because they involve creating accounts or granting access, not because of any technical limitation. Claude Code can walk through each one with you when you get there, but the click itself has to be yours.
 
 - [ ] Buy a domain, if you don't want to launch on a Netlify subdomain first
+      Checked 2026-08-26 via Porkbun: `benchlog.dev` `.io` `.com` `.net` and `.de`
+      are all TAKEN. Available: **benchlog.eu EUR 5.88/yr** (best brand match, and
+      .eu suits the German/European positioning), localaibench.de or aibenchlog.de
+      at EUR 2.90 first year / EUR 5.49 renewal. Avoid benchlog.tech - EUR 6.99 first
+      year but EUR 50.98 to renew. Porkbun keys are already in E:\CLAUDE\.env;
+      the purchase itself has to be your click.
 - [ ] Create or confirm a GitHub account, create the repo
 - [ ] Create or confirm a Netlify account, connect it to that repo
 - [ ] Create the Substack publication
+      Still not done as of 2026-08-26. The homepage no longer promises email
+      signup because of this - it offers RSS instead, which needs no processor
+      and no consent banner. If you do want an email list, decide between
+      Substack (own privacy policy, no DSGVO work for you) and a form provider
+      (needs adding to the Datenschutzerklaerung).
 - [ ] Get Substack Publisher API access for that publication, and generate the token Claude Code will use
 - [ ] Decide the working name for the site, a placeholder is used in this kit until you pick one
 
