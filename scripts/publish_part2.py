@@ -92,6 +92,11 @@ def main():
 
     shutil.rmtree(STAGE, ignore_errors=True)
 
+    # Part 2's page is now in src/pages/log/, so the feed must be rebuilt --
+    # generate_rss.py derives its items from those pages.
+    run([sys.executable, os.path.join(ROOT, 'scripts', 'generate_rss.py')])
+    log('rss.xml regenerated')
+
     npm = shutil.which('npm') or shutil.which('npm.cmd')
     if npm:
         run([npm, 'run', 'build'])

@@ -12,7 +12,14 @@
 <meta property="og:title" content="Bench Log — Local AI, tested on real hardware">
 <meta property="og:description" content="RTX 5070 Ti benchmarks, ComfyUI and Flux LoRA workflows, on-prem RAG deployments. Real configs and measured numbers.">
 <meta property="og:url" content="https://hoppingproject.netlify.app/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://hoppingproject.netlify.app/og/home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bench Log — Local AI, tested on real hardware">
+<meta property="og:site_name" content="bench.log">
+<meta name="twitter:image" content="https://hoppingproject.netlify.app/og/home.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="bench.log" href="https://hoppingproject.netlify.app/rss.xml">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   :root {
@@ -143,6 +150,33 @@
   }
   .entry .read-more:hover { border-bottom-color: var(--accent); }
 
+  .follow-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .follow-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #15130F;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    padding: 11px 20px;
+    border-radius: 2px;
+    transition: filter 0.2s ease;
+  }
+  .follow-btn:hover { filter: brightness(1.12); }
+  .follow-alt {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .follow-alt:hover { color: var(--ink-dim); }
   .subscribe {
     margin: 0 6vw 8vw;
     max-width: 880px;
@@ -205,7 +239,8 @@
   <nav>
     <a href="#log">Log</a>
     <a href="#about">About</a>
-    <a href="#newsletter">Newsletter</a>
+    <a href="#follow">Follow</a>
+    <a href="/rss.xml">RSS</a>
   </nav>
 </header>
 
@@ -260,15 +295,15 @@
   </article>
 </section>
 
-<div class="subscribe" id="newsletter">
+<div class="subscribe" id="follow">
   <div>
-    <h3>Get the next entry by email</h3>
-    <p id="subscribe-status">One issue roughly every one to two weeks. No spam, just what actually got tested.</p>
+    <h3>Follow the log</h3>
+    <p>New entries land when something real gets tested — roughly weekly, never on a schedule for its own sake.</p>
   </div>
-  <form id="subscribe-form">
-    <input type="email" id="subscribe-email" placeholder="you@example.com" required>
-    <button type="submit">Subscribe</button>
-  </form>
+  <div class="follow-actions">
+    <a class="follow-btn" href="/rss.xml">Subscribe by RSS</a>
+    <a class="follow-alt" href="mailto:kontakt@klarverk.de?subject=bench.log%20—%20tell%20me%20when%20there%27s%20a%20new%20entry">or email me to be told</a>
+  </div>
 </div>
 
 <footer>
@@ -277,15 +312,6 @@
   <a href="/datenschutz">Datenschutz</a>
 </footer>
 
-<script>
-  const form = document.getElementById('subscribe-form');
-  const status = document.getElementById('subscribe-status');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    status.textContent = "Signup isn't wired up yet — the newsletter is waiting on Substack API access. Check back soon.";
-    form.querySelector('button').disabled = true;
-  });
-</script>
 
 <!-- Cloudflare Web Analytics — cookieless, no personal data stored -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9d549f504d264920917edaa208fb0aab"}'></script>
