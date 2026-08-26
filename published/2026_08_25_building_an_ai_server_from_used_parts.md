@@ -3,13 +3,14 @@ title: "I'm building a 40 GB AI server out of 2014 server parts, and the GPUs ar
 date: 2026-08-25
 project: Local AI infrastructure / third node
 status: planned
+part: 1 of 2
 stack: Ubuntu Server, Ollama, SSH tunnels (mirroring the existing pc2 setup)
 hardware: RTX 3090 24 GB + RTX 5070 Ti 16 GB, dual Xeon E5-2620 v3, Supermicro X10DRi-T4+, 112 GB DDR4
 ---
 
-**PLANNED** · nothing racked yet · no benchmark, no power figure, on purpose
+**PLANNED** · nothing bought, nothing racked · no benchmark, no power figure, on purpose
 
-I have a pile of used parts on the floor and a decision I made yesterday that I actually like: a third machine, built almost entirely from hardware nobody wants any more, whose only job is to run a coding model locally and take the grind work off a metered API bill.
+I have a parts list on screen and a decision I made yesterday that I actually like: a third machine, built almost entirely from hardware nobody wants any more, whose only job is to run a coding model locally and take the grind work off a metered API bill. Nothing is ordered yet. This entry is the reasoning, written down before the money makes it permanent.
 
 The parts list reads like a 2014 datacenter that got liquidated. A Supermicro X10DRi-T4+ board, two Xeon E5-2620 v3s, 112 GB of DDR4. Into that go two graphics cards I already own — an RTX 3090 at 24 GB and an RTX 5070 Ti at 16 GB — for 40 GB of pooled VRAM. There's an RTX 3060 that could make it 52 GB if I decide the slot is worth it.
 
@@ -27,4 +28,4 @@ There's one honest caveat sitting in my own build notes. The plan names a specif
 
 There's also a cost I keep not writing down, which is the 3090. It isn't spare. It's in my desktop right now, doing real work. Moving it into the server means my main machine gets weaker so that a machine in the other room gets strong enough to be worth building. That trade is the actual bet here, and it's not one I can settle with a spec sheet.
 
-Next entry on this: what it actually draws from the wall, and whether two slow Xeons ruin the thing the VRAM made possible.
+Part 2: the money leaves the account, and I decide to put a camera on the assembly.

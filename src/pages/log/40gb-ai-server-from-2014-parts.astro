@@ -1,0 +1,168 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm building a 40 GB AI server out of 2014 server parts, and the GPUs are the boring half — Bench Log</title>
+<meta name="description" content="Planning a third local AI node from liquidated 2014 server hardware: dual Xeon E5-2620 v3, Supermicro X10DRi-T4+, 112 GB DDR4, and 40 GB of pooled VRAM. Why the GPUs are the least interesting decision in the build.">
+<link rel="canonical" href="https://hoppingproject.netlify.app/log/40gb-ai-server-from-2014-parts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="I'm building a 40 GB AI server out of 2014 server parts, and the GPUs are the boring half">
+<meta property="og:description" content="Dual Xeon E5-2620 v3, Supermicro X10DRi-T4+, 112 GB DDR4, 40 GB pooled VRAM. Why the GPUs are the least interesting decision in the build.">
+<meta property="og:url" content="https://hoppingproject.netlify.app/log/40gb-ai-server-from-2014-parts">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root {
+    --bg: #15130F;
+    --bg-raised: #1C1913;
+    --ink: #EDE6D8;
+    --ink-dim: #A39C8C;
+    --muted: #7C8577;
+    --accent: #E8A33D;
+    --line: #2B2820;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 6vw;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  .wordmark span { color: var(--accent); }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+    margin-left: 28px;
+  }
+  nav a:hover { color: var(--ink); }
+
+  main {
+    padding: 7vw 6vw 8vw;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: 3px 9px;
+    transform: rotate(-1.2deg);
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  article p {
+    color: var(--ink-dim);
+    margin-bottom: 20px;
+    font-size: 1.02rem;
+  }
+  article strong { color: var(--ink); font-weight: 600; }
+  article code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    color: var(--ink);
+  }
+  .back {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer {
+    padding: 26px 6vw 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="wordmark">bench<span>.log</span></a>
+  <nav>
+    <a href="/">Log</a>
+  </nav>
+</header>
+
+<main>
+  <span class="stamp">planned · infrastructure · part 1 of 2</span>
+  <h1>I'm building a 40 GB AI server out of 2014 server parts, and the GPUs are the boring half</h1>
+  <div class="meta">25 Aug 2026 · dual Xeon E5-2620 v3 · Supermicro X10DRi-T4+ · 40 GB pooled VRAM</div>
+
+  <article>
+    <p>I have a parts list on screen and a decision I made yesterday that I actually like: a third machine, built almost entirely from hardware nobody wants any more, whose only job is to run a coding model locally and take the grind work off a metered API bill. Nothing is ordered yet. This entry is the reasoning, written down before the money makes it permanent.</p>
+
+    <p>The parts list reads like a 2014 datacenter that got liquidated. A Supermicro X10DRi-T4+ board, two Xeon E5-2620 v3s, 112 GB of DDR4. Into that go two graphics cards I already own — an RTX 3090 at 24 GB and an RTX 5070 Ti at 16 GB — for 40 GB of pooled VRAM. There's an RTX 3060 that could make it 52 GB if I decide the slot is worth it.</p>
+
+    <p>Here's the thing I keep having to say out loud: <strong>the GPUs are the least interesting part of this build.</strong> VRAM is the number everyone quotes because it's the number that gates whether a model loads at all, and I already know how that arithmetic comes out. What I don't know is everything downstream of it, and that's where used server hardware actually bites.</p>
+
+    <p>Two E5-2620 v3s give me a lot of cores that are each individually slow. That is completely fine for the thing a server is normally for, and potentially not fine at all for a mixture-of-experts model that spills layers onto the CPU — which is precisely the class of model I want to run. Forty gigabytes of pooled VRAM across two <em>different</em> cards is also not the same object as forty gigabytes on one card; a 24+16 split has a seam in it, and where that seam falls depends on the model. I have opinions about how both of those will go. I have no measurements, so they stay opinions, and they stay out of this post as numbers.</p>
+
+    <p>The one hard number I <em>do</em> have comes from the box that already exists. The second machine on this LAN — a small always-on Ubuntu box with a 3060 in it — talks to my main PC at about 12 MB/s and drops transfers over a gigabyte. That's measured, that's the network this new machine inherits, and it's the reason a decision that sounded technical turned out to be a logistics decision: big model weights get downloaded <strong>on</strong> the server, not copied <strong>to</strong> it.</p>
+
+    <p>The genuinely interesting choice was one I nearly got wrong. My first instinct was to merge everything — pull the 3060 out of the little box, consolidate into one large GPU host, stop maintaining two machines. I talked myself out of it in about ten minutes. The small box's entire value is that it's small and always on: transcription, embeddings, an errand-sized model, available at 3 a.m. without me thinking about it. The moment it becomes half of a big rig, it's busy whenever the big rig is busy, and I've traded two capabilities for one. So they stay separate. Two machines, two roles.</p>
+
+    <p>Everything else about the plan is deliberately unoriginal. Same Ubuntu Server, same driver and Ollama stack, same key-based SSH, same tunnel-it-to-localhost pattern the existing box already uses — new alias, new ports, nothing else new. One playbook for two machines. The temptation with a fresh build is to make it a laboratory for four things you've been meaning to try; the cost of that shows up six months later when neither box works the way the other one does and you can't remember which is which.</p>
+
+    <p>There's one honest caveat sitting in my own build notes. The plan names a specific model — a current MoE coding model — as the target, and I wrote a warning next to it telling myself to re-check that name at build time rather than trust it. A model name in a month-old plan is already stale. The <em>shape</em> of what I want (an MoE coder that fits in 40 GB) will outlive the name by a year.</p>
+
+    <p>There's also a cost I keep not writing down, which is the 3090. It isn't spare. It's in my desktop right now, doing real work. Moving it into the server means my main machine gets weaker so that a machine in the other room gets strong enough to be worth building. That trade is the actual bet here, and it's not one I can settle with a spec sheet.</p>
+
+    <p>Part 2: the money leaves the account, and I decide to put a camera on the assembly.</p>
+  </article>
+
+  <a class="back" href="/">← Back to the log</a>
+</main>
+
+<footer>
+  bench.log — a project of Klarverk, Zirndorf ·
+  <a href="/impressum">Impressum</a> ·
+  <a href="/datenschutz">Datenschutz</a>
+</footer>
+
+<!-- Cloudflare Web Analytics — cookieless, no personal data stored -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9d549f504d264920917edaa208fb0aab"}'></script>
+
+</body>
+</html>
