@@ -1,0 +1,6 @@
+[2026-08-29] publishing part 2: bought-the-server-filming-the-build
+[2026-08-29] moved page into src/pages/log/ and markdown into published/
+[2026-08-29] inserted entry into index.astro
+[2026-08-29] inserted entry into sitemap.xml
+[2026-08-29] rss.xml regenerated
+[2026-08-29] astro build OK

@@ -9,8 +9,16 @@
   <link>https://hoppingproject.netlify.app/</link>
   <description>A running log of local AI work on ordinary hardware: RTX 5070 Ti benchmarks, ComfyUI and Flux LoRA workflows, on-prem RAG deployments. Real configs and measured numbers, written as the work happens.</description>
   <language>en</language>
-  <lastBuildDate>Wed, 26 Aug 2026 05:50:47 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 29 Aug 2026 08:00:00 +0000</lastBuildDate>
   <atom:link href="https://hoppingproject.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>I bought the whole server, and now I get to do nothing about it for a week</title>
+    <link>https://hoppingproject.netlify.app/log/bought-the-server-filming-the-build</link>
+    <guid isPermaLink="true">https://hoppingproject.netlify.app/log/bought-the-server-filming-the-build</guid>
+    <description>Every part for the third local AI node is bought and none of it has arrived. Why the RTX 3090 leaving my desktop is the real cost, and the rules I'm setting before I film the assembly.</description>
+    <pubDate>Wed, 26 Aug 2026 10:00:00 +0200</pubDate>
+    <enclosure url="https://hoppingproject.netlify.app/og/bought-the-server-filming-the-build.png" type="image/png" length="0"/>
+  </item>
   <item>
     <title>I'm building a 40 GB AI server out of 2014 server parts, and the GPUs are the boring half</title>
     <link>https://hoppingproject.netlify.app/log/40gb-ai-server-from-2014-parts</link>

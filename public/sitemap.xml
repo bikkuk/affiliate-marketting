@@ -13,6 +13,11 @@
   </url>
   <!-- SITEMAP:TOP -->
   <url>
+    <loc>https://hoppingproject.netlify.app/log/bought-the-server-filming-the-build</loc>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hoppingproject.netlify.app/log/40gb-ai-server-from-2014-parts</loc>
     <lastmod>2026-08-25</lastmod>
     <priority>0.8</priority>
